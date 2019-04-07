@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <p>{{food}}</p>
     <button @click="handleClick('push')">返回上一页</button>
     <button @click="handleClick('replace')">返回上一页</button>
   </div>
@@ -11,8 +12,22 @@ import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
   name: "home",
+  props: {
+    food: {
+      type: String,
+      default: "Home"
+    }
+  },
   components: {
     HelloWorld
+  },
+  beforeRouteEnter(to, from, next) {
+    next();
+  },
+  beforeRouteLeave(to, from, next) {
+    if (confirm("你确定要离开吗")) {
+      next();
+    }
   },
   methods: {
     handleClick(type, e) {
@@ -27,7 +42,7 @@ export default {
           // params: {
           //   name: "lison"
           // }
-          path: '/argu/caicai'
+          path: "/argu/caicai"
         });
       } else if (type === "replace") {
         this.$router.replace({

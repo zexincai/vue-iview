@@ -3,7 +3,20 @@ export default [
     path: '/',
     alias: '/home_page',
     name: 'home',
-    component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue')
+    component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
+    props: route => ({
+      food: route.query.food
+    }),
+    // beforeEnter: (to, from, next) => {
+    //   if (from.name === 'about') alert('这是从登陆也来得')
+    //   else alert('这不是从登陆也来得')
+    //   next()
+    // }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import(/* webpackChunkName: "home" */ '@/views/login.vue'),
   },
   {
     path: '/about',
@@ -11,12 +24,19 @@ export default [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue'),
+    props: {
+      food: 'banana'
+    },
+    meta: {
+      title: '关于'
+    }
   },
   {
     path: '/argu/:name',
     name: 'argu',
-    component: () => import(/* webpackChunkName: "argu" */ '@/views/argu.vue')
+    component: () => import(/* webpackChunkName: "argu" */ '@/views/argu.vue'),
+    props: true
   },
   {
     path: '/parent',
@@ -42,5 +62,9 @@ export default [
     redirect: to => {
       console.log(to)
     }
+  },
+  {
+    path: '*',
+    component: () => import('@/views/error_404.vue')
   }
 ]
