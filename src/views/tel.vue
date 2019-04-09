@@ -1,18 +1,28 @@
 <template>
-  <div>
-    tel : '666'
+  <div class="tel">
+    <p>{{message}}</p>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      message: ''
+    };
   },
-  methods: {}
+  methods: {},
+  mounted() {
+    this.$bus.$on("on-click", mes => {
+      this.message = mes;
+    });
+  }
 };
 </script>
 
 <style lang="less">
+.tel {
+  border: 1px solid red;
+}
 </style>
 

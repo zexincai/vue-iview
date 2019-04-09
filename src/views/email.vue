@@ -1,6 +1,6 @@
 <template>
   <div>
-    email : 'caizexin@11.com'
+    <button @click="hanleClick">按我</button>
   </div>
 </template>
 
@@ -9,7 +9,14 @@ export default {
   data() {
     return {};
   },
-  methods: {}
+  methods: {
+    hanleClick() {
+      this.$bus.$emit("on-click", "hello")
+    }
+  },
+  mounted() {
+    console.log(this.$bus);
+  }
 };
 </script>
 

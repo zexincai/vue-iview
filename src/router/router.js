@@ -6,7 +6,7 @@ export default [
     component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
     props: route => ({
       food: route.query.food
-    }),
+    })
     // beforeEnter: (to, from, next) => {
     //   if (from.name === 'about') alert('这是从登陆也来得')
     //   else alert('这不是从登陆也来得')
@@ -62,6 +62,10 @@ export default [
     redirect: to => {
       console.log(to)
     }
+  },
+  {
+    path: '/store',
+    component: () => import('@/views/store.vue')
   },
   {
     path: '*',

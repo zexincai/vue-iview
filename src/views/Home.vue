@@ -24,11 +24,11 @@ export default {
   beforeRouteEnter(to, from, next) {
     next();
   },
-  beforeRouteLeave(to, from, next) {
-    if (confirm("你确定要离开吗")) {
-      next();
-    }
-  },
+  // beforeRouteLeave(to, from, next) {
+  //   if (confirm("你确定要离开吗")) {
+  //     next();
+  //   }
+  // },
   methods: {
     handleClick(type, e) {
       if (type === "back") {
