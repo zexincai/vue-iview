@@ -14,6 +14,6 @@ module.exports = {
   },
   productionSourceMap: false,
   devServer: {
-    proxy: 'http://localhost:4000'
+    proxy: 'http://192.168.0.105:4000'
   }
 }

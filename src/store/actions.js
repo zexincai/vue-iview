@@ -1,6 +1,6 @@
 import { getAppName } from '@/api/app.js'
 const actions = {
-  async updateAppName ({ commit }) {
+  async updateAppName ({ commit, dispatch }) {
     // getAppName().then(res => {
     //   const { info } = res
     //   commit('SET_APP_NAME', info)

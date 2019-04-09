@@ -3,12 +3,15 @@
     <p>{{food}}</p>
     <button @click="handleClick('push')">返回上一页</button>
     <button @click="handleClick('replace')">返回上一页</button>
+    <button @click="getInfo">请求数据</button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
+import axios from "axios";
+import { getUserInfo } from "@/api/user";
 
 export default {
   name: "home",
@@ -50,6 +53,11 @@ export default {
         });
       }
       console.log(type, e);
+    },
+    getInfo() {
+      getUserInfo({ userId:123 }).then(res => {
+        console.log("res", res);
+      });
     }
   }
 };
